@@ -14,6 +14,7 @@ How to run
 2. (Optional) Add sound files in `sounds/` e.g. `sounds/tick.mp3`, `sounds/chime.mp3`. The app synthesizes sounds if none are provided.
 3. Open `index.html` in a modern browser (Chrome, Edge, Firefox, Safari).
 4. Click "Add Clock" to add more timezones; use settings to change themes and sound.
+5. Best used on desktop or second monitor for tracking global timezones
 
 Customizing & Extending
 - Replace or add more visual backgrounds in `app.js` drawBg function.
