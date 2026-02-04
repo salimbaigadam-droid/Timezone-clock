@@ -1,0 +1,111 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>World Animated Timezone Clock</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div id="app">
+    <header class="topbar">
+      <h1>World Clock — Animated & Sound</h1>
+      <div class="controls">
+        <button id="addClockBtn" title="Add a clock">＋ Add Clock</button>
+        <button id="settingsBtn" title="Settings">⚙️</button>
+      </div>
+    </header>
+
+    <main>
+      <section id="clocksContainer" class="clocks-grid" aria-live="polite"></section>
+    </main>
+
+    <aside id="settings" class="panel hidden" aria-hidden="true">
+      <h2>Settings</h2>
+      <label>
+        Theme
+        <select id="themeSelect">
+          <option value="dark">Dark</option>
+          <option value="light">Light</option>
+          <option value="pastel">Pastel</option>
+        </select>
+      </label>
+
+      <label>
+        Background
+        <select id="bgSelect">
+          <option value="gradient">Animated Gradient</option>
+          <option value="particles">Particles</option>
+          <option value="blur">Blurred Photo (placeholder)</option>
+        </select>
+      </label>
+
+      <label>
+        Tick sound
+        <input type="checkbox" id="tickEnable" checked>
+      </label>
+
+      <label>
+        Hour chime
+        <input type="checkbox" id="chimeEnable" checked>
+      </label>
+
+      <label>
+        Tick volume
+        <input id="tickVol" type="range" min="0" max="1" step="0.01" value="0.6">
+      </label>
+
+      <label>
+        24-hour
+        <input type="checkbox" id="hour24">
+      </label>
+
+      <label>
+        Show seconds
+        <input type="checkbox" id="showSeconds" checked>
+      </label>
+
+      <button id="closeSettings">Close</button>
+      <hr>
+      <div class="instructions">
+        <strong>How to add custom sounds</strong>
+        <p>Put audio files in a folder named <code>sounds</code> (e.g. <code>sounds/tick.mp3</code>, <code>sounds/chime.mp3</code>).</p>
+      </div>
+    </aside>
+
+    <canvas id="bgCanvas" class="bg-canvas"></canvas>
+
+    <footer class="footer">
+      <small>Built with HTML/CSS/JS — Works offline. Click "Add Clock" to add timezones.</small>
+    </footer>
+  </div>
+
+  <template id="clockTemplate">
+    <div class="clock-card">
+      <div class="clock-header">
+        <input class="labelInput" value="New Clock">
+        <select class="tzSelect"></select>
+        <button class="removeBtn" title="Remove">✖</button>
+      </div>
+      <div class="clock-body">
+        <svg class="analog" viewBox="0 0 120 120" aria-hidden="true">
+          <circle class="face" cx="60" cy="60" r="56"></circle>
+          <g class="hands">
+            <line class="hour" x1="60" y1="60" x2="60" y2="34"></line>
+            <line class="minute" x1="60" y1="60" x2="60" y2="20"></line>
+            <line class="second" x1="60" y1="60" x2="60" y2="16"></line>
+          </g>
+          <circle class="center" cx="60" cy="60" r="2.5"></circle>
+        </svg>
+
+        <div class="digital">
+          <div class="timeStr">00:00:00</div>
+          <div class="dateStr">YYYY-MM-DD</div>
+        </div>
+      </div>
+    </div>
+  </template>
+
+  <script src="app.js" type="module"></script>
+</body>
+</html>
